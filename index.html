@@ -210,6 +210,40 @@ section[id]{scroll-margin-top:80px}
 .tool-link{text-decoration:none; transition:border-color .2s, box-shadow .2s}
 .tool-link:hover{border-color:var(--navy); box-shadow:var(--shadow)}
 .tool small{font-size:.75rem; font-weight:700; color:var(--gold); letter-spacing:.04em; margin-top:auto; padding-top:6px}
+/* projects: process-style cards */
+.pflow, .pgrid{list-style:none; margin:0; padding:0; display:grid; grid-template-columns:repeat(3, minmax(0,1fr)); gap:48px 64px; padding-top:16px}
+.pgrid{gap:34px 26px}
+.pcard{--c:#2F6FD6; --bg:#EEF4FF; position:relative; border:2px solid var(--c); background:var(--bg); border-radius:16px; min-width:0;
+  box-shadow:0 10px 24px -18px rgba(18,34,63,.45); transition:transform .2s, box-shadow .2s}
+.pcard:hover{transform:translateY(-3px); box-shadow:0 18px 30px -18px rgba(18,34,63,.5)}
+.pcard{display:flex; flex-direction:column; padding:22px 20px 18px}
+.plink{position:absolute; inset:0; border-radius:14px; z-index:1}
+.plink:focus-visible{outline:3px solid var(--c); outline-offset:3px}
+.pcard h4{margin:0 64px 8px 0; font-size:1.125rem; font-weight:800; color:var(--ink); line-height:1.25; letter-spacing:-.01em}
+.pcard h4 i{font-style:normal; color:var(--c)}
+.pcard p{margin:0 0 12px; font-size:.9063rem; line-height:1.55; color:var(--text)}
+.pcard small{margin-top:auto; align-self:flex-start; font-size:.75rem; font-weight:800; letter-spacing:.03em; color:#fff; background:var(--c); border-radius:999px; padding:4px 11px}
+.pico{position:absolute; top:-18px; right:-12px; width:62px; height:62px; border-radius:50%; background:var(--c); color:#fff; display:grid; place-items:center;
+  border:4px solid #fff; box-shadow:0 8px 18px -8px rgba(18,34,63,.55)}
+.pico svg{width:26px; height:26px}
+.c-blue{--c:#2F6FD6; --bg:#EEF4FF} .c-green{--c:#2E9E5B; --bg:#ECF8F0} .c-orange{--c:#E07B2E; --bg:#FFF3E8}
+.c-violet{--c:#7A4FD0; --bg:#F4EFFF} .c-teal{--c:#1C93A6; --bg:#E8F7FA} .c-amber{--c:#C9932B; --bg:#FFF8E6}
+/* snake arrows: 1 → 2 → 3, down, 6 ← 5 ← 4 */
+.pflow .pcard::after{content:""; position:absolute; width:40px; height:16px; background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 16'%3E%3Cpath d='M2 8h33M29 2l7 6-7 6' fill='none' stroke='%2312223F' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center/contain no-repeat; opacity:.75}
+.pflow .pcard:nth-child(1)::after, .pflow .pcard:nth-child(2)::after{right:-54px; top:50%; transform:translateY(-50%)}
+.pflow .pcard:nth-child(3)::after{left:50%; bottom:-33px; transform:translateX(-50%) rotate(90deg)}
+.pflow .pcard:nth-child(4){grid-column:3; grid-row:2} .pflow .pcard:nth-child(5){grid-column:2; grid-row:2} .pflow .pcard:nth-child(6){grid-column:1; grid-row:2}
+.pflow .pcard:nth-child(4)::after, .pflow .pcard:nth-child(5)::after{left:-54px; top:50%; transform:translateY(-50%) rotate(180deg)}
+.pflow .pcard:nth-child(6)::after{display:none}
+@media (max-width: 1000px){
+  .pflow, .pgrid{grid-template-columns:minmax(0,1fr); gap:44px; max-width:560px; margin:0 auto}
+  .pgrid{gap:34px}
+  .pflow .pcard:nth-child(n){grid-column:auto; grid-row:auto}
+  .pflow .pcard:nth-child(n)::after{display:block; left:50%; right:auto; top:auto; bottom:-32px; transform:translateX(-50%) rotate(90deg)}
+  .pflow .pcard:last-child::after{display:none}
+  .pico{right:-6px}
+}
+
 
 /* credentials */
 .creds{display:grid; grid-template-columns:repeat(2, minmax(0,1fr)); gap:48px}
@@ -561,27 +595,26 @@ footer .wrap{padding-block:22px; display:flex; justify-content:space-between; ga
       </article>
 
       <div class="others">
-        <h3>What's inside the toolkit</h3>
-        <div class="tools">
-          <div class="tool"><b>Payroll and cost sheets</b><span>Pulls attendance and overtime from site files into payroll by employee ID, and builds payroll, bonus and cost sheets per site.</span><small>18 macros</small></div>
-          <div class="tool"><b>WPS / SIF checks</b><span>Checks MOL numbers, routing codes and account numbers against the bank master and counts every error before submission.</span><small>Built into payroll</small></div>
-          <div class="tool"><b>ERP uploads</b><span>Turns raw attendance and OT exports into the ERP upload format for staff and workers, and tracks pending approvals.</span><small>10 macros</small></div>
-          <div class="tool"><b>Attendance, leave and meals</b><span>One standard format for daily punching, leave and meal data across all sites.</span><small>5 macros</small></div>
-          <div class="tool"><b>PDF and reporting</b><span>One-click PDF export of payroll and the weekly management report, plus PDF splitting and bulk unblocking.</span><small>6 macros</small></div>
-          <div class="tool"><b>Excel utilities and HR launcher</b><span>31 everyday clean-up tools, and 26 shortcuts that open HR registers, letter templates and shared folders in one click.</span><small>57 macros</small></div>
-        </div>
+        <h3>How a payroll month runs through the toolkit</h3>
+        <ol class="pflow">
+          <li class="pcard c-blue"><span class="pico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></span><h4><i>1.</i> Attendance, leave and meals</h4><p>One standard format for daily punching, leave and meal data from every site.</p><small>5 macros</small></li>
+          <li class="pcard c-green"><span class="pico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 10h18M9 4v16M15 4v16"/></svg></span><h4><i>2.</i> Payroll and cost sheets</h4><p>Pulls attendance and overtime into payroll by employee ID, and builds payroll, bonus and cost sheets per site.</p><small>18 macros</small></li>
+          <li class="pcard c-orange"><span class="pico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3 4 6v6c0 4.5 3.4 8.3 8 9 4.6-.7 8-4.5 8-9V6z"/><path d="m9 12 2 2 4-4"/></svg></span><h4><i>3.</i> WPS / SIF checks</h4><p>Checks MOL numbers, routing codes and account numbers against the bank master before submission.</p><small>Built into payroll</small></li>
+          <li class="pcard c-violet"><span class="pico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 18a5 5 0 0 1-.9-9.9A6 6 0 0 1 17.7 9 4.5 4.5 0 0 1 17 18"/><path d="M12 12v9M8.5 15.5 12 12l3.5 3.5"/></svg></span><h4><i>4.</i> ERP uploads</h4><p>Turns attendance and OT exports into the ERP upload format, and tracks pending approvals.</p><small>10 macros</small></li>
+          <li class="pcard c-teal"><span class="pico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"/><path d="M14 3v6h6M8 13h8M8 17h5"/></svg></span><h4><i>5.</i> PDF and reporting</h4><p>One-click PDF of payroll and the weekly management report, plus PDF splitting and bulk unblocking.</p><small>6 macros</small></li>
+          <li class="pcard c-amber"><span class="pico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14.7 6.3a4 4 0 0 0 5 5L21 13l-8 8-3-3 8-8-1.3-1.3a4 4 0 0 0-5-5L14 5z"/><path d="m3 21 6-6"/></svg></span><h4><i>6.</i> Utilities and HR launcher</h4><p>31 clean-up tools, and 26 shortcuts that open HR registers, letter templates and shared folders.</p><small>57 macros</small></li>
+        </ol>
       </div>
 
       <div class="others">
         <h3>Other things I've built</h3>
-        <div class="tools">
-          <div class="tool"><b>In-house HR system</b><span>Built in Python with 4 modules: employee records, payroll and WPS with gratuity, attendance and leave, and document and visa tracking.</span><small>Python</small></div>
-          <a class="tool tool-link" href="work/hr-analytics-dashboard.html"><b>HR analytics dashboard</b><span>An interactive dashboard I built in Python and Plotly: headcount, attrition, payroll cost, overtime and visa renewals, with filters by site and department.</span><small>Open live dashboard →</small></a>
-          <div class="tool"><b>Onboarding and offboarding kit</b><span>A 32-slide UAE compliance induction, an offboarding form and a process flowchart aligned with UAE Labour Law.</span><small>HR process</small></div>
-          <div class="tool"><b>Fuzzy name matching</b><span>Matches employee names that are spelled differently in different systems.</span><small>Excel VBA</small></div>
-          <div class="tool"><b>Certificate renamer</b><span>Reads PDF insurance certificates and renames each file to the member's name.</span><small>Python</small></div>
-          
-        </div>
+        <ul class="pgrid">
+          <li class="pcard c-blue"><span class="pico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m12 3 9 5-9 5-9-5z"/><path d="m3 13 9 5 9-5"/></svg></span><h4><i>1.</i> In-house HR system</h4><p>Built in Python with 4 modules: employee records, payroll and WPS with gratuity, attendance and leave, and document and visa tracking.</p><small>Python</small></li>
+          <li class="pcard c-green"><span class="pico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 20V10M10 20V4M16 20v-7M22 20H2"/></svg></span><h4><i>2.</i> HR analytics dashboard</h4><p>Interactive dashboard in Python and Plotly: headcount, attrition, payroll cost, overtime and visa renewals, filtered by site and department.</p><small>Open live dashboard →</small><a class="plink" href="work/hr-analytics-dashboard.html" aria-label="HR analytics dashboard"></a></li>
+          <li class="pcard c-orange"><span class="pico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="8" r="4"/><path d="M2 21a7 7 0 0 1 14 0M19 8v6M16 11h6"/></svg></span><h4><i>3.</i> Onboarding and offboarding kit</h4><p>A 32-slide UAE compliance induction, an offboarding form and a process flowchart aligned with UAE Labour Law.</p><small>HR process</small></li>
+          <li class="pcard c-violet"><span class="pico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="8" cy="8" r="3"/><circle cx="16" cy="16" r="3"/><path d="M10.5 10.5l3 3M14 5h5v5M10 19H5v-5"/></svg></span><h4><i>4.</i> Fuzzy name matching</h4><p>Matches employee names that are spelled differently in different systems.</p><small>Excel VBA</small></li>
+          <li class="pcard c-teal"><span class="pico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h5"/><path d="M14 3v6h6v3"/><path d="m18.5 14.5 2 2-5 5H13.5v-2z"/></svg></span><h4><i>5.</i> Certificate renamer</h4><p>Reads PDF insurance certificates and renames each file to the member's name.</p><small>Python</small></li>
+        </ul>
       </div>
     </div>
   </section>
