@@ -245,6 +245,7 @@ section[id]{scroll-margin-top:80px}
 }
 
 
+
 /* credentials */
 .creds{display:grid; grid-template-columns:repeat(2, minmax(0,1fr)); gap:48px}
 .creds h3{font-size:1.0625rem; font-weight:700; margin-bottom:14px}
@@ -341,6 +342,38 @@ footer .wrap{padding-block:22px; display:flex; justify-content:space-between; ga
   .cert-list{grid-template-columns:1fr}
   .top .btn{padding:8px 14px}
 }
+
+/* colourful blocks across the homepage (same style as Projects) */
+:is(.wins,.areas,.arts,.htools,.cert-list,.duties,.clist,.chips) > :nth-child(6n+1){--c:#2F6FD6; --bg:#EEF4FF}
+:is(.wins,.areas,.arts,.htools,.cert-list,.duties,.clist,.chips) > :nth-child(6n+2){--c:#2E9E5B; --bg:#ECF8F0}
+:is(.wins,.areas,.arts,.htools,.cert-list,.duties,.clist,.chips) > :nth-child(6n+3){--c:#E07B2E; --bg:#FFF3E8}
+:is(.wins,.areas,.arts,.htools,.cert-list,.duties,.clist,.chips) > :nth-child(6n+4){--c:#7A4FD0; --bg:#F4EFFF}
+:is(.wins,.areas,.arts,.htools,.cert-list,.duties,.clist,.chips) > :nth-child(6n+5){--c:#1C93A6; --bg:#E8F7FA}
+:is(.wins,.areas,.arts,.htools,.cert-list,.duties,.clist,.chips) > :nth-child(6n+6){--c:#C9932B; --bg:#FFF8E6}
+.win, .area, .art, .htool{position:relative; background:var(--bg); border:2px solid var(--c); border-radius:16px; box-shadow:0 10px 24px -18px rgba(18,34,63,.45); transition:transform .2s, box-shadow .2s, border-color .2s}
+.win:hover, .area:hover, .art:hover, .htool:hover{transform:translateY(-3px); border-color:var(--c); box-shadow:0 18px 30px -18px rgba(18,34,63,.5)}
+.wins, .areas, .arts, .htools{gap:36px 26px; padding-top:16px}
+.win b{color:var(--c)}
+.win h3, .art h3{margin-right:54px}
+.win p{color:var(--text)}
+.areas{counter-reset:area}
+.area{counter-increment:area}
+.area h3{margin-right:54px}
+.area h3::before{content:counter(area) ". "; color:var(--c)}
+.area .ico, .htool .ico{position:absolute; top:-18px; right:-12px; width:62px; height:62px; border-radius:50%; background:var(--c); color:#fff; border:4px solid #fff; box-shadow:0 8px 18px -8px rgba(18,34,63,.55)}
+.area .ico svg, .htool .ico svg{width:26px; height:26px}
+.htool{display:block}
+.htool h3{margin-right:54px}
+.art small{color:var(--c)}
+.art span, .htool span{align-self:flex-start; display:inline-block; background:var(--c); color:#fff; border-radius:999px; padding:5px 13px; font-size:.8125rem; font-weight:800}
+.duty{background:var(--bg); border:2px solid var(--c); border-radius:14px; padding:16px 18px}
+.duty h4{color:var(--c)}
+.duty li::marker{color:var(--c)}
+.cert-list li{background:var(--bg); border:2px solid var(--c); border-radius:12px}
+.cert-list b{color:var(--c)}
+.chips li{background:var(--bg); border-color:var(--c); color:var(--ink)}
+.citem > svg{width:44px; height:44px; padding:11px; border-radius:50%; background:var(--c); color:#fff; box-sizing:border-box}
+@media (max-width: 560px){ .pico, .area .ico, .htool .ico{right:-6px; width:54px; height:54px} .win h3, .art h3, .area h3, .htool h3{margin-right:46px} }
 </style>
 </head>
 <body>
@@ -425,12 +458,12 @@ footer .wrap{padding-block:22px; display:flex; justify-content:space-between; ga
     <div class="wrap">
       <div class="head"><p class="eyebrow">Key achievements</p><h2>Results, in numbers</h2></div>
       <div class="wins">
-        <article class="win"><b>0</b><h3>WPS penalties in 7+ years</h3><p>While paying 1,200+ employees every month.</p></article>
-        <article class="win"><b>40%</b><h3>Faster payroll preparation</h3><p>After automating payroll processing and verification with Excel VBA.</p></article>
-        <article class="win"><b>600+</b><h3>Employees hired</h3><p>Blue-collar and white-collar, across 10+ completed projects.</p></article>
-        <article class="win"><b>2</b><h3>New HR policies drafted</h3><p>Part of a full HR Policy Manual draft aligned with Federal Decree-Law No. 33 of 2021, covering work injury and death in service.</p></article>
-        <article class="win"><b>4</b><h3>HR system modules</h3><p>An in-house HR system I built in Python: employee records, payroll and WPS with gratuity, attendance and leave, and document and visa tracking.</p></article>
-        <article class="win"><b>32</b><h3>Slide compliance induction</h3><p>A standard onboarding programme on UAE compliance steps, plus an offboarding form and process flowchart.</p></article>
+        <article class="win"><span class="pico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3 4 6v6c0 4.5 3.4 8.3 8 9 4.6-.7 8-4.5 8-9V6z"/><path d="m9 12 2 2 4-4"/></svg></span><b>0</b><h3>WPS penalties in 7+ years</h3><p>While paying 1,200+ employees every month.</p></article>
+        <article class="win"><span class="pico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M13 2 4 14h7l-1 8 9-12h-7z"/></svg></span><b>40%</b><h3>Faster payroll preparation</h3><p>After automating payroll processing and verification with Excel VBA.</p></article>
+        <article class="win"><span class="pico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="8" r="3.5"/><path d="M2.5 20a6.5 6.5 0 0 1 13 0"/><path d="M16 4.5a3.5 3.5 0 0 1 0 7M18 14a6 6 0 0 1 3.5 6"/></svg></span><b>600+</b><h3>Employees hired</h3><p>Blue-collar and white-collar, across 10+ completed projects.</p></article>
+        <article class="win"><span class="pico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"/><path d="M14 3v6h6M8 13h8M8 17h5"/></svg></span><b>2</b><h3>New HR policies drafted</h3><p>Part of a full HR Policy Manual draft aligned with Federal Decree-Law No. 33 of 2021, covering work injury and death in service.</p></article>
+        <article class="win"><span class="pico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m12 3 9 5-9 5-9-5z"/><path d="m3 13 9 5 9-5"/></svg></span><b>4</b><h3>HR system modules</h3><p>An in-house HR system I built in Python: employee records, payroll and WPS with gratuity, attendance and leave, and document and visa tracking.</p></article>
+        <article class="win"><span class="pico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="12" rx="2"/><path d="M12 16v4M8 20h8M7 9l3 2 4-3 3 2"/></svg></span><b>32</b><h3>Slide compliance induction</h3><p>A standard onboarding programme on UAE compliance steps, plus an offboarding form and process flowchart.</p></article>
       </div>
     </div>
   </section>
@@ -561,10 +594,10 @@ footer .wrap{padding-block:22px; display:flex; justify-content:space-between; ga
         <a class="btn btn-ghost" href="blog/index.html">All articles</a>
       </div>
       <div class="arts">
-        <a class="art" href="blog/uae-leave-entitlements.html"><small>Payroll &amp; compliance · 7 min</small><h3>Leave entitlements under UAE Labour Law</h3><p>Annual, sick, maternity, parental, bereavement and study leave, with days and pay.</p><span>Read →</span></a>
-        <a class="art" href="blog/uae-overtime-calculation.html"><small>Payroll &amp; compliance · 6 min</small><h3>How to calculate overtime under UAE Labour Law</h3><p>Normal, night, rest-day and holiday rates, with a worked example.</p><span>Read →</span></a>
-        <a class="art" href="blog/recruitment-planning-construction.html"><small>Recruitment · 6 min</small><h3>Planning recruitment for construction projects</h3><p>Turning a project programme into a hiring plan, and the five numbers to track.</p><span>Read →</span></a>
-        <a class="art" href="blog/uae-gratuity-guide.html"><small>Payroll &amp; compliance · 5 min</small><h3>How UAE gratuity is calculated</h3><p>The formula, what counts as wage, the 24-month cap, and two examples.</p><span>Read →</span></a>
+        <a class="art" href="blog/uae-leave-entitlements.html"><span class="pico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18M8 15h3"/></svg></span><small>Payroll &amp; compliance · 7 min</small><h3>Leave entitlements under UAE Labour Law</h3><p>Annual, sick, maternity, parental, bereavement and study leave, with days and pay.</p><span>Read →</span></a>
+        <a class="art" href="blog/uae-overtime-calculation.html"><span class="pico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="13" r="8"/><path d="M12 9v4l2.5 2M9 2h6"/></svg></span><small>Payroll &amp; compliance · 6 min</small><h3>How to calculate overtime under UAE Labour Law</h3><p>Normal, night, rest-day and holiday rates, with a worked example.</p><span>Read →</span></a>
+        <a class="art" href="blog/recruitment-planning-construction.html"><span class="pico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M9 7V5a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2v2M3 13h18"/></svg></span><small>Recruitment · 6 min</small><h3>Planning recruitment for construction projects</h3><p>Turning a project programme into a hiring plan, and the five numbers to track.</p><span>Read →</span></a>
+        <a class="art" href="blog/uae-gratuity-guide.html"><span class="pico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M15 9.5c-.6-1-1.7-1.5-3-1.5-1.7 0-3 .9-3 2.2 0 3 6 1.6 6 4.6 0 1.3-1.3 2.2-3 2.2-1.4 0-2.6-.6-3.1-1.6M12 6.5V8M12 16v1.5"/></svg></span><small>Payroll &amp; compliance · 5 min</small><h3>How UAE gratuity is calculated</h3><p>The formula, what counts as wage, the 24-month cap, and two examples.</p><span>Read →</span></a>
       </div>
     </div>
   </section>

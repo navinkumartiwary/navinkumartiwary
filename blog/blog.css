@@ -94,3 +94,12 @@ footer a{color:#E2C27F; text-decoration:none; font-weight:700}
 
 .lawref{display:flex; flex-wrap:wrap; align-items:baseline; gap:4px 10px; margin:-.3em 0 1.1em !important; font-size:.875rem; color:var(--muted) !important}
 .lawref span{font-size:.6875rem; font-weight:800; letter-spacing:.08em; text-transform:uppercase; color:var(--navy); background:#EEF2F8; border-radius:5px; padding:3px 8px}
+
+/* colourful article cards (same style as the homepage) */
+.list > :nth-child(6n+1){--c:#2F6FD6; --bg:#EEF4FF} .list > :nth-child(6n+2){--c:#2E9E5B; --bg:#ECF8F0}
+.list > :nth-child(6n+3){--c:#E07B2E; --bg:#FFF3E8} .list > :nth-child(6n+4){--c:#7A4FD0; --bg:#F4EFFF}
+.list > :nth-child(6n+5){--c:#1C93A6; --bg:#E8F7FA} .list > :nth-child(6n+6){--c:#C9932B; --bg:#FFF8E6}
+.post-card{background:var(--bg); border:2px solid var(--c); border-radius:16px; box-shadow:0 10px 24px -18px rgba(18,34,63,.45); transition:transform .2s, box-shadow .2s}
+.post-card:hover{transform:translateY(-3px); box-shadow:0 18px 30px -18px rgba(18,34,63,.5)}
+.post-card .cat{color:var(--c)}
+.post-card .more{align-self:flex-start; background:var(--c); color:#fff; border-radius:999px; padding:5px 13px; font-size:.8125rem; font-weight:800}
