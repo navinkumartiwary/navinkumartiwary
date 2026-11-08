@@ -1,3 +1,4 @@
 User-agent: *
 Allow: /
+Disallow: /private/data/
 Sitemap: https://navinkumartiwary.github.io/navinkumartiwary/sitemap.xml
