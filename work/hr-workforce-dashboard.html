@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>HR Workforce Dashboard · Navin Kumar Tiwary</title>
+<link rel="icon" href="../favicon.ico?v=2" sizes="any">
+<link rel="icon" type="image/png" sizes="32x32" href="../images/favicon-32.png?v=2">
+<link rel="apple-touch-icon" href="../images/apple-touch-icon.png?v=2">
+<meta name="description" content="Power BI style HR workforce dashboard built by Navin Kumar Tiwary in Python (pandas, Plotly Express) and rebuilt for the web: headcount, attrition, payroll, salary, overtime and tenure, with slicers. Sample data only.">
+<link rel="canonical" href="https://navinkumartiwary.github.io/navinkumartiwary/work/hr-workforce-dashboard.html">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Navin Kumar Tiwary">
+<meta property="og:title" content="HR Workforce Dashboard · Navin Kumar Tiwary">
+<meta property="og:description" content="Power BI style HR workforce dashboard: headcount, attrition, payroll, salary, overtime and tenure, with slicers. Sample data only.">
+<meta property="og:url" content="https://navinkumartiwary.github.io/navinkumartiwary/work/hr-workforce-dashboard.html">
+<meta property="og:image" content="https://navinkumartiwary.github.io/navinkumartiwary/images/og-image.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<script src="../assets/plotly-4.1.1.min.js"></script>
+<style>
+  :root { --bg:#F3F2F1; --ink:#252423; --ink2:#605E5C; --muted:#A19F9D; --line:#E1DFDD; --font:"Segoe UI", system-ui, -apple-system, Arial, sans-serif; }
+  * { box-sizing:border-box; }
+  body { margin:0; background:var(--bg); color:var(--ink); font-family:var(--font); -webkit-font-smoothing:antialiased; }
+  a { color:inherit; }
+  .topbar { background:#0E1F45; color:#fff; font-size:13px; font-weight:600; }
+  .topbar .in { max-width:1500px; margin:0 auto; padding:10px 20px; display:flex; justify-content:space-between; align-items:center; gap:10px; flex-wrap:wrap; }
+  .topbar a { text-decoration:none; display:inline-flex; align-items:center; gap:8px; }
+  .topbar a:hover { color:#E2C27F; }
+  .topbar .tag { color:#E2C27F; }
+  .page { max-width:1500px; margin:0 auto; padding:14px 16px 24px; }
+  .intro { display:flex; justify-content:space-between; align-items:flex-end; gap:12px; flex-wrap:wrap; margin:4px 0 12px; }
+  .intro p { margin:0; color:var(--ink2); font-size:13.5px; max-width:60rem; line-height:1.5; }
+  .stack { display:flex; gap:6px; flex-wrap:wrap; }
+  .stack span { background:#fff; border:1px solid var(--line); font-size:12px; font-weight:600; padding:4px 9px; color:var(--ink2); }
+  .slicers { background:#fff; box-shadow:0 1px 3px rgba(0,0,0,.12); padding:10px 14px; display:flex; gap:10px 18px; flex-wrap:wrap; align-items:center; }
+  .slicers label { display:flex; align-items:center; gap:8px; font-size:13px; color:var(--ink); }
+  .slicers select { font:13px var(--font); padding:5px 8px; border:1px solid #C8C6C4; background:#fff; min-width:150px; color:var(--ink); }
+  .slicers button { margin-left:auto; font:600 13px var(--font); padding:6px 12px; border:1px solid #C8C6C4; background:#fff; cursor:pointer; }
+  .slicers button:hover { background:#F3F2F1; }
+  .board { margin-top:12px; background:var(--bg); }
+  .hdr { background:#252423; color:#fff; padding:14px 22px; display:flex; justify-content:space-between; align-items:center; gap:10px; flex-wrap:wrap; border-bottom:4px solid #F2C811; }
+  .hdr h1 { margin:0; font-size:22px; font-weight:600; }
+  .hdr span { font-size:12px; color:#C8C6C4; }
+  .kpis { display:grid; grid-template-columns:repeat(6, minmax(0,1fr)); gap:12px; padding:14px 0 4px; }
+  .kpi { background:#fff; padding:12px 14px; box-shadow:0 1px 3px rgba(0,0,0,.12); border-top:4px solid var(--c); min-width:0; }
+  .k-val { font-size:26px; font-weight:600; color:var(--ink); white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+  .k-lbl { font-size:12px; color:var(--ink2); margin-top:2px; }
+  .k-sub { font-size:11px; color:var(--muted); margin-top:2px; }
+  .grid { display:grid; grid-template-columns:repeat(3, minmax(0,1fr)); gap:12px; padding:12px 0; }
+  .tile { background:#fff; padding:10px 12px 4px; box-shadow:0 1px 3px rgba(0,0,0,.12); min-width:0; }
+  .tile.span2 { grid-column:span 2; }
+  .t-title { font-size:14px; font-weight:600; color:var(--ink); margin-bottom:4px; }
+  .chart { height:300px; }
+  .empty { padding:30px; text-align:center; color:var(--ink2); background:#fff; }
+  .about { background:#fff; box-shadow:0 1px 3px rgba(0,0,0,.12); padding:16px 18px; margin-top:4px; font-size:13.5px; color:var(--ink2); line-height:1.6; }
+  .about h2 { margin:0 0 6px; font-size:16px; color:var(--ink); }
+  .about ul { margin:6px 0 0; padding-left:18px; }
+  footer { max-width:1500px; margin:0 auto; padding:4px 16px 30px; display:flex; justify-content:space-between; gap:10px; flex-wrap:wrap; font-size:12.5px; color:var(--ink2); font-weight:600; }
+  footer a { color:#14295A; text-decoration:none; font-weight:700; }
+  @media (max-width:1100px) { .kpis { grid-template-columns:repeat(3, minmax(0,1fr)); } .grid { grid-template-columns:repeat(2, minmax(0,1fr)); } }
+  @media (max-width:700px) {
+    .kpis { grid-template-columns:repeat(2, minmax(0,1fr)); gap:8px; } .k-val { font-size:21px; }
+    .grid { grid-template-columns:minmax(0,1fr); } .tile.span2 { grid-column:auto; }
+    .slicers label { flex:1 1 100%; justify-content:space-between; } .slicers select { flex:1; min-width:0; } .slicers button { margin-left:0; flex:1 1 100%; }
+    .hdr { padding:12px 14px; } .hdr h1 { font-size:19px; }
+  }
+</style></head>
+<body>
+<div class="topbar"><div class="in">
+  <a href="../index.html#built"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5"/><path d="m12 19-7-7 7-7"/></svg>Navin Kumar Tiwary · Portfolio</a>
+  <span class="tag">Sample data · no real employee information</span>
+</div></div>
+
+<main class="page">
+  <div class="intro">
+    <p>A Power BI style workforce dashboard I built in Python in Google Colab, rebuilt here so it runs in your browser. Use the slicers to filter every chart and KPI at once. All 1,200 employees are made up.</p>
+    <div class="stack"><span>Python</span><span>pandas</span><span>Plotly Express</span><span>ipywidgets</span></div>
+  </div>
+
+  <div class="slicers" role="group" aria-label="Filters">
+    <label>Site <select id="f-site"></select></label>
+    <label>Department <select id="f-department"></select></label>
+    <label>Category <select id="f-category"></select></label>
+    <label>Nationality <select id="f-nationality"></select></label>
+    <label>Status <select id="f-status"></select></label>
+    <button type="button" id="reset">Reset filters</button>
+  </div>
+
+  <section class="board" aria-label="HR workforce dashboard">
+    <div class="hdr"><h1>HR Workforce Dashboard</h1><span id="hdr-sub">Loading…</span></div>
+    <div class="kpis" id="kpis"></div>
+    <div class="grid" id="grid">
+      <div class="tile"><div class="t-title">Headcount by Site</div><div class="chart" id="c1"></div></div>
+      <div class="tile"><div class="t-title">Headcount by Department</div><div class="chart" id="c2"></div></div>
+      <div class="tile"><div class="t-title">Workforce by Category &amp; Gender</div><div class="chart" id="c3"></div></div>
+      <div class="tile span2"><div class="t-title">Hiring vs Leavers by Joining Year</div><div class="chart" id="c4"></div></div>
+      <div class="tile"><div class="t-title">Attrition Rate by Department</div><div class="chart" id="c5"></div></div>
+      <div class="tile span2"><div class="t-title">Basic Salary Distribution by Department</div><div class="chart" id="c7"></div></div>
+      <div class="tile"><div class="t-title">Nationality Mix</div><div class="chart" id="c6"></div></div>
+      <div class="tile span2"><div class="t-title">Monthly Basic Payroll – Site › Department (Active)</div><div class="chart" id="c8"></div></div>
+      <div class="tile"><div class="t-title">Performance Rating Distribution</div><div class="chart" id="c9"></div></div>
+      <div class="tile"><div class="t-title">Avg OT Hours &amp; Absence by Site</div><div class="chart" id="c10"></div></div>
+      <div class="tile"><div class="t-title">Headcount &amp; Attrition by Tenure</div><div class="chart" id="c11"></div></div>
+      <div class="tile"><div class="t-title">Salary Histogram by Category</div><div class="chart" id="c12"></div></div>
+    </div>
+  </section>
+
+  <div class="about">
+    <h2>How it was built</h2>
+    <ul>
+      <li>Data prepared with pandas: joining year, status (Active / Left), tenure bands and gender labels.</li>
+      <li>Twelve Plotly Express charts in a Power BI colour theme, laid out in a 3-column grid with six KPI cards.</li>
+      <li>Five slicers (site, department, category, nationality, status) rebuild every chart and KPI, as ipywidgets dropdowns did in the notebook.</li>
+      <li>Sample data: 1,200 made-up employees across three project sites and head office. <a href="data/hr-sample-employees.csv" download>Download the CSV</a></li>
+    </ul>
+  </div>
+</main>
+
+<footer><span>Built by Navin Kumar Tiwary with Python (pandas + Plotly) · runs entirely in your browser</span><a href="../index.html#contact">Get in touch →</a></footer>
+
+<script>
+(() => {
+  const PBI = ["#118DFF", "#12239E", "#E66C37", "#6B007B", "#E044A7", "#744EC2", "#D9B300", "#D64550", "#197278", "#1AAB40"];
+  const STATUS = { Active: "#118DFF", Left: "#E66C37" };
+  const FONT = '"Segoe UI", system-ui, Arial, sans-serif';
+  const CFG = { displayModeBar: false, responsive: true };
+  const $ = id => document.getElementById(id);
+  const phone = () => window.innerWidth < 700;
+  const TODAY = new Date();
+  let ALL = [];
+
+  const layout = (extra = {}, legend = true) => Object.assign({
+    margin: { l: 10, r: 10, t: 10, b: 10 }, paper_bgcolor: "white", plot_bgcolor: "white",
+    font: { family: FONT, size: 11, color: "#252423" }, showlegend: legend,
+    legend: { orientation: "h", yanchor: "bottom", y: 1.0, x: 0, title: { text: "" } },
+    hoverlabel: { bgcolor: "white", font: { family: FONT } },
+    xaxis: { showgrid: false, linecolor: "#C8C6C4", automargin: true, title: { font: { size: 11 } } },
+    yaxis: { gridcolor: "#EDEBE9", zeroline: false, automargin: true, title: { font: { size: 11 } } }
+  }, extra);
+  const merge = (base, ax, extra) => { base[ax] = Object.assign({}, base[ax], extra); return base; };
+  const plot = (id, data, lay) => Plotly.react(id, data, lay, CFG);
+
+  const count = (rows, key) => rows.reduce((m, r) => (m[r[key]] = (m[r[key]] || 0) + 1, m), {});
+  const mean = a => a.length ? a.reduce((s, x) => s + x, 0) / a.length : 0;
+  const median = a => { if (!a.length) return 0; const s = [...a].sort((x, y) => x - y), m = s.length >> 1; return s.length % 2 ? s[m] : (s[m - 1] + s[m]) / 2; };
+  const uniq = (rows, key) => [...new Set(rows.map(r => r[key]))].sort();
+  const fmt = n => n.toLocaleString("en-US");
+  const BANDS = [[0, 1, "<1 yr"], [1, 3, "1-3 yrs"], [3, 5, "3-5 yrs"], [5, 8, "5-8 yrs"], [8, 100, "8+ yrs"]];
+
+  function parse(text) {
+    const [head, ...lines] = text.trim().split(/\r?\n/);
+    const cols = head.split(",");
+    return lines.map(l => {
+      const v = l.split(","), r = {};
+      cols.forEach((c, i) => r[c] = v[i]);
+      const jd = new Date(r.join_date);
+      const t = (TODAY - jd) / (365.25 * 864e5);
+      return {
+        emp_id: r.emp_id, site: r.site, department: r.department, category: r.category, nationality: r.nationality,
+        gender: r.gender === "M" ? "Male" : r.gender === "F" ? "Female" : r.gender,
+        join_year: jd.getFullYear(), basic: +r.basic_salary, ot: +r.ot_hours, absent: +r.absent_days,
+        rating: +r.rating, left: +r.left, status: +r.left ? "Left" : "Active",
+        tenure: Math.round(t * 10) / 10, band: (BANDS.find(b => t >= b[0] && t < b[1]) || BANDS[4])[2]
+      };
+    });
+  }
+
+  const FILTERS = [["site", "f-site"], ["department", "f-department"], ["category", "f-category"], ["nationality", "f-nationality"], ["status", "f-status"]];
+  function setupSlicers() {
+    FILTERS.forEach(([key, id]) => {
+      const s = $(id), opts = key === "status" ? ["Active", "Left"] : uniq(ALL, key);
+      s.innerHTML = '<option value="All">All</option>' + opts.map(o => `<option>${o}</option>`).join("");
+      s.addEventListener("change", render);
+    });
+    $("reset").addEventListener("click", () => { FILTERS.forEach(([, id]) => $(id).value = "All"); render(); });
+  }
+
+  function kpi(label, value, sub, color) {
+    return `<div class="kpi" style="--c:${color}"><div class="k-val">${value}</div><div class="k-lbl">${label}</div><div class="k-sub">${sub}</div></div>`;
+  }
+
+  function render() {
+    const parts = [];
+    let d = ALL;
+    FILTERS.forEach(([key, id]) => { const v = $(id).value; if (v !== "All") { d = d.filter(r => r[key] === v); parts.push(`${key[0].toUpperCase() + key.slice(1)}: ${v}`); } });
+    const today = TODAY.toLocaleDateString("en-GB", { day: "2-digit", month: "short", year: "numeric" });
+    $("hdr-sub").textContent = `Filters: ${parts.length ? parts.join(", ") : "All data"}  |  Data as of ${today}`;
+    if (!d.length) {
+      $("kpis").innerHTML = ""; $("grid").style.display = "none";
+      if (!$("empty")) { const e = document.createElement("div"); e.id = "empty"; e.className = "empty"; e.textContent = "No employees match these filters. Try changing or resetting them."; $("grid").after(e); }
+      return;
+    }
+    $("grid").style.display = ""; if ($("empty")) $("empty").remove();
+
+    const active = d.filter(r => !r.left), nLeft = d.length - active.length;
+    $("kpis").innerHTML = [
+      kpi("Total Headcount", fmt(d.length), `${uniq(d, "site").length} site(s) · ${uniq(d, "department").length} dept(s)`, "#118DFF"),
+      kpi("Active Employees", fmt(active.length), `${fmt(nLeft)} left`, "#12239E"),
+      kpi("Attrition Rate", (nLeft / d.length * 100).toFixed(1) + "%", "Left ÷ total headcount", "#E66C37"),
+      kpi("Monthly Basic Payroll", "AED " + (active.reduce((s, r) => s + r.basic, 0) / 1e6).toFixed(2) + "M", "Active employees", "#6B007B"),
+      kpi("Avg Basic Salary", "AED " + fmt(Math.round(mean(d.map(r => r.basic)))), "Median AED " + fmt(Math.round(median(d.map(r => r.basic)))), "#E044A7"),
+      kpi("Avg OT Hours", mean(d.map(r => r.ot)).toFixed(1), `Avg absence ${mean(d.map(r => r.absent)).toFixed(1)} days · rating ${mean(d.map(r => r.rating)).toFixed(2)}`, "#D9B300")
+    ].join("");
+
+    // 1 Headcount by site, stacked by status
+    const sites = uniq(d, "site");
+    plot("c1", ["Active", "Left"].map(st => {
+      const y = sites.map(s => d.filter(r => r.site === s && r.status === st).length);
+      return { type: "bar", name: st, x: sites, y, text: y, textposition: "inside", marker: { color: STATUS[st] }, cliponaxis: false };
+    }), merge(layout({ barmode: "relative" }), "yaxis", { title: { text: "Employees" } }));
+
+    // 2 Department share (donut)
+    const dc = count(d, "department"), dk = Object.keys(dc).sort((a, b) => dc[b] - dc[a]);
+    plot("c2", [{ type: "pie", labels: dk, values: dk.map(k => dc[k]), hole: 0.6, sort: false, textinfo: "percent", textposition: "outside", marker: { colors: PBI } }],
+      layout({ margin: { l: 34, r: 20, t: 24, b: 24 }, legend: { orientation: phone() ? "h" : "v", x: phone() ? 0 : 1.02, y: phone() ? -0.15 : 0.5 } }));
+
+    // 3 Category & gender (donut)
+    const g3 = {}; d.forEach(r => { const k = `${r.category} · ${r.gender}`; g3[k] = (g3[k] || 0) + 1; });
+    const k3 = Object.keys(g3).sort((a, b) => g3[b] - g3[a]);
+    plot("c3", [{ type: "pie", labels: k3, values: k3.map(k => g3[k]), hole: 0.6, sort: false, textinfo: "percent+value", textposition: "outside", marker: { colors: PBI } }],
+      layout({ margin: { l: 34, r: 20, t: 24, b: 24 }, legend: { orientation: phone() ? "h" : "v", x: phone() ? 0 : 1.02, y: phone() ? -0.15 : 0.5 } }));
+
+    // 4 Hiring vs leavers by joining year
+    const years = [...new Set(d.map(r => r.join_year))].sort();
+    const hired = years.map(y => d.filter(r => r.join_year === y).length), lft = years.map(y => d.filter(r => r.join_year === y && r.left).length);
+    plot("c4", [
+      { type: "scatter", mode: "lines+markers", name: "Hired", x: years, y: hired, line: { color: "#118DFF", width: 2.5 } },
+      { type: "scatter", mode: "lines+markers", name: "Left", x: years, y: lft, line: { color: "#E66C37", width: 2.5 } }
+    ], merge(merge(layout(), "xaxis", { title: { text: "Joining year" }, dtick: 1 }), "yaxis", { title: { text: "Employees" } }));
+
+    // 5 Attrition % by department
+    const depts = uniq(d, "department").map(k => { const g = d.filter(r => r.department === k); return [k, +(g.filter(r => r.left).length / g.length * 100).toFixed(1)]; }).sort((a, b) => a[1] - b[1]);
+    const mx5 = Math.max(...depts.map(x => x[1]), 1);
+    plot("c5", [{ type: "bar", orientation: "h", x: depts.map(x => x[1]), y: depts.map(x => x[0]), text: depts.map(x => x[1] + "%"), textposition: "outside", cliponaxis: false,
+      marker: { color: depts.map(x => x[1]), colorscale: [[0, "#F6C9B5"], [1, "#B33D1F"]] }, hovertemplate: "%{y}: %{x}%<extra></extra>" }],
+      merge(merge(layout({}, false), "xaxis", { range: [0, mx5 * 1.18], title: { text: "Attrition %" } }), "yaxis", { title: { text: "" } }));
+
+    // 6 Nationality mix
+    const nc = count(d, "nationality"), nk = Object.keys(nc).sort((a, b) => nc[a] - nc[b]);
+    plot("c6", [{ type: "bar", orientation: "h", x: nk.map(k => nc[k]), y: nk, text: nk.map(k => nc[k]), textposition: "outside", cliponaxis: false, marker: { color: "#12239E" } }],
+      merge(merge(layout({}, false), "xaxis", { range: [0, Math.max(...nk.map(k => nc[k])) * 1.15], title: { text: "Employees" } }), "yaxis", { title: { text: "" } }));
+
+    // 7 Salary by department & category (box)
+    plot("c7", ["Worker", "Staff"].filter(c => d.some(r => r.category === c)).map((c, i) => ({
+      type: "box", name: c, x: d.filter(r => r.category === c).map(r => r.department), y: d.filter(r => r.category === c).map(r => r.basic),
+      marker: { color: i ? "#E044A7" : "#118DFF" }, boxpoints: "outliers"
+    })), merge(merge(layout({ boxmode: "group" }), "yaxis", { title: { text: "Basic salary (AED)" } }), "xaxis", { title: { text: "" } }));
+
+    // 8 Site > department payroll (treemap, active)
+    const ids = ["All sites"], labels = ["All sites"], parents = [""], values = [0];
+    uniq(active, "site").forEach(s => {
+      const sv = active.filter(r => r.site === s);
+      ids.push(s); labels.push(s); parents.push("All sites"); values.push(0);
+      uniq(sv, "department").forEach(dp => { ids.push(s + "/" + dp); labels.push(dp); parents.push(s); values.push(sv.filter(r => r.department === dp).reduce((t, r) => t + r.basic, 0)); });
+    });
+    plot("c8", [{ type: "treemap", ids, labels, parents, values, branchvalues: "remainder", textinfo: "label+value+percent root",
+      texttemplate: "<b>%{label}</b><br>AED %{value:,.0f}<br>%{percentRoot:.1%}", hovertemplate: "%{label}<br>AED %{value:,.0f}<extra></extra>",
+      marker: { colors: ids.map((_, i) => PBI[i % PBI.length]) }, root: { color: "#F3F2F1" } }], layout({ margin: { l: 4, r: 4, t: 4, b: 4 } }, false));
+
+    // 9 Rating distribution by status
+    const ratings = [1, 2, 3, 4, 5];
+    plot("c9", ["Active", "Left"].map(st => { const y = ratings.map(k => d.filter(r => r.rating === k && r.status === st).length);
+      return { type: "bar", name: st, x: ratings, y, text: y, textposition: "outside", cliponaxis: false, marker: { color: STATUS[st] } }; }),
+      merge(merge(layout({ barmode: "group" }), "xaxis", { title: { text: "Rating (1-5)" }, dtick: 1 }), "yaxis", { title: { text: "Employees" } }));
+
+    // 10 Avg OT hours & absence by site
+    const s10 = uniq(d, "site");
+    plot("c10", [["Avg OT hours", "ot", "#D9B300"], ["Avg absent days", "absent", "#744EC2"]].map(([n, k, c]) => {
+      const y = s10.map(s => +mean(d.filter(r => r.site === s).map(r => r[k])).toFixed(1));
+      return { type: "bar", name: n, x: s10, y, text: y, textposition: "outside", cliponaxis: false, marker: { color: c } };
+    }), layout({ barmode: "group" }));
+
+    // 11 Tenure band: headcount coloured by attrition %
+    const bl = BANDS.map(b => b[2]).filter(b => d.some(r => r.band === b));
+    const bn = bl.map(b => d.filter(r => r.band === b).length), ba = bl.map((b, i) => +(d.filter(r => r.band === b && r.left).length / bn[i] * 100).toFixed(1));
+    plot("c11", [{ type: "bar", x: bl, y: bn, text: bn, textposition: "outside", cliponaxis: false, customdata: ba,
+      hovertemplate: "%{x}<br>Employees: %{y}<br>Attrition: %{customdata}%<extra></extra>",
+      marker: { color: ba, colorscale: [[0, "#C6E2FF"], [0.5, "#118DFF"], [1, "#12239E"]], showscale: !phone(), colorbar: { title: { text: "Attr %" }, thickness: 10 } } }],
+      merge(merge(layout({}, false), "xaxis", { title: { text: "Tenure" } }), "yaxis", { title: { text: "Employees" } }));
+
+    // 12 Salary histogram by category
+    plot("c12", ["Worker", "Staff"].filter(c => d.some(r => r.category === c)).map((c, i) => ({
+      type: "histogram", name: c, x: d.filter(r => r.category === c).map(r => r.basic), nbinsx: 40, marker: { color: i ? "#E044A7" : "#118DFF" }
+    })), merge(merge(layout({ barmode: "stack", bargap: 0.05 }), "xaxis", { title: { text: "Basic salary (AED)" } }), "yaxis", { title: { text: "Employees" } }));
+  }
+
+  fetch("data/hr-sample-employees.csv").then(r => r.text()).then(t => { ALL = parse(t); setupSlicers(); render(); })
+    .catch(() => { $("hdr-sub").textContent = "Could not load the sample data. Please refresh the page."; });
+  let rt; window.addEventListener("resize", () => { clearTimeout(rt); rt = setTimeout(() => ALL.length && render(), 250); });
+})();
+</script>
+</body></html>
