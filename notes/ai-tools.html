@@ -55,6 +55,8 @@ html{scroll-behavior:smooth; scroll-padding-top:20px}
 .qa details[open] summary::before{content:"−"}
 .qa details > div{padding:0 16px 4px 42px; font-size:.9844rem}
 .disclaimer{font-size:.9375rem; color:var(--muted)}
+.notes pre.code{background:#0F1E3D; color:#E6ECF7; border-radius:12px; padding:14px 16px; margin:0 0 1.2em; overflow-x:auto; font:13px/1.6 var(--mono)}
+.notes pre.code code{background:none; border:0; padding:0; color:inherit; font:inherit; white-space:pre}
 @media (max-width:900px){ .notes-layout{grid-template-columns:1fr; gap:24px} .ntoc{position:static} .ntoc ol{columns:2; column-gap:12px} }
 @media (max-width:560px){ .notes table{font-size:.875rem} .notes th, .notes td{padding:9px 10px} .notes td{min-width:6.5rem} .notes td:first-child{min-width:6rem} .ntoc ol{columns:1} .tagline{margin-left:0 !important} .qa details > div{padding-left:16px} .nsec h2{font-size:1.375rem} }
 </style>
@@ -79,14 +81,14 @@ html{scroll-behavior:smooth; scroll-padding-top:20px}
     <p class="crumb"><a href="../index.html#notes">Notes</a> / AI tools</p>
     <h1>AI tools: my learning notes</h1>
     <p class="sub">How to get real work done with Claude, ChatGPT, Gemini, Microsoft Copilot and the best of the rest. Prompting skills, key features, HR prompts you can copy, and exercises to practise with.</p>
-    <div class="meta"><span>By Navin Kumar Tiwary</span><span>Updated 26 Nov 2026</span><span>29 min read</span></div>
+    <div class="meta"><span>By Navin Kumar Tiwary</span><span>Updated 26 Nov 2026</span><span>39 min read</span></div>
   </div>
 </section>
 
 <main class="wrap notes-layout">
   <nav class="ntoc" aria-label="Contents"><p>Contents</p><ol>
 <li><a href="#ai-1"><span>1</span>Prompting skills that work in every tool</a></li>
-<li><a href="#ai-2"><span>2</span>Claude (Anthropic)</a></li>
+<li><a href="#ai-2"><span>2</span>Claude (Anthropic): the complete guide</a></li>
 <li><a href="#ai-3"><span>3</span>ChatGPT (OpenAI)</a></li>
 <li><a href="#ai-4"><span>4</span>Gemini (Google)</a></li>
 <li><a href="#ai-5"><span>5</span>Microsoft Copilot</a></li>
@@ -160,9 +162,36 @@ html{scroll-behavior:smooth; scroll-padding-top:20px}
 </section>
 
 <section class="nsec" id="ai-2">
-  <h2><span class="no">2</span>Claude (Anthropic)</h2>
-  <p class="tagline">Writing · analysis · files · code</p>
+  <h2><span class="no">2</span>Claude (Anthropic): the complete guide</h2>
+  <p class="tagline">Writing · analysis · files · code · agents</p>
 <p class="why"><b>Best at:</b> careful reading and writing of long documents, following detailed instructions, Excel and Python work, and producing finished files (Word, Excel, PowerPoint, PDF, web pages). It is also strong at agent-style work: doing a multi-step task with tools and coming back with a result.</p>
+<h3>Where you can use Claude</h3>
+<div class="tablewrap"><table><thead><tr><th>Where</th><th>Best for</th><th>How to get it</th></tr></thead><tbody>
+<tr><td><b>Web</b> (claude.ai)</td><td>Everyday chats, Projects, artifacts</td><td>Sign in at claude.ai</td></tr>
+<tr><td><b>Desktop app</b> (Windows, Mac)</td><td>Longer tasks, working with files and folders on your computer, Claude Code</td><td>Download from claude.com/download</td></tr>
+<tr><td><b>Mobile app</b> (iPhone, Android)</td><td>Quick questions, voice, photos of documents, checking on tasks</td><td>App Store / Google Play</td></tr>
+<tr><td><b>Claude in Chrome</b></td><td>Working on websites for you: reading, filling forms, collecting data</td><td>Chrome Web Store (paid plans)</td></tr>
+<tr><td><b>Claude for Microsoft 365</b></td><td>Working inside Excel, Word, PowerPoint and Outlook</td><td>Microsoft AppSource add-ins (paid plans)</td></tr>
+<tr><td><b>Claude Code</b></td><td>Writing and running code, building tools and websites</td><td>Desktop app, claude.ai/code, or terminal (paid plans)</td></tr>
+<tr><td><b>Slack</b> (Claude Tag)</td><td>Asking Claude for help inside team channels</td><td>Team and Enterprise plans</td></tr>
+</tbody></table></div>
+<p>Your chats, Projects, memory and usage are shared across all of these, so you can start on your laptop and check the result on your phone.</p>
+<h3>Find your way around the screen</h3>
+<ul>
+<li><b>Left sidebar:</b> New chat, your recent chats, <b>Projects</b>, <b>Artifacts</b> (everything Claude has made for you), <b>Scheduled</b> (recurring tasks) and <b>Customize</b> (skills, connectors, plugins).</li>
+<li><b>Message box:</b> the <b>+</b> button (attach files, switch connectors and tools, turn on Research or web search), <b>Output</b> (start from a template such as a doc, slides or design), and the <b>model picker</b>.</li>
+<li><b>Settings</b> (click your name): <b>Your Claude</b> (memory and chat search), <b>Capabilities</b> (file creation and other features), <b>Usage</b> (how much you have left), <b>Privacy</b>.</li>
+<li><b>Ghost icon</b> (top right of a new chat): an incognito chat that isn't saved or remembered.</li>
+</ul>
+<h3>Chat basics that save time</h3>
+<ul>
+<li><b>Attach anything:</b> PDF, Word, Excel, CSV, PowerPoint, images and screenshots. Drag them into the message box. Claude reads tables, scanned forms and charts.</li>
+<li><b>Edit your message</b> (pencil icon) to change the question and get a fresh answer, instead of adding corrections underneath.</li>
+<li><b>Retry</b> to get a different version of the same answer.</li>
+<li><b>Highlight text</b> in a document Claude made and choose <b>Edit with Claude</b> to change just that part.</li>
+<li><b>Start a new chat</b> for a new topic. Long chats use more of your allowance and can drift.</li>
+<li><b>Voice:</b> on mobile, tap the microphone to dictate or talk.</li>
+</ul>
 <h3>Plans (November 2026, US prices)</h3>
 <div class="tablewrap"><table><thead><tr><th>Plan</th><th>Price</th><th>What you get</th></tr></thead><tbody>
 <tr><td>Free</td><td>$0</td><td>Chat, web search, file creation, memory, connectors, skills, artifacts; up to 5 Projects</td></tr>
@@ -170,8 +199,17 @@ html{scroll-behavior:smooth; scroll-padding-top:20px}
 <tr><td>Max</td><td>From $100/month</td><td>5× or 20× Pro usage, priority access, early features</td></tr>
 <tr><td>Team / Enterprise</td><td>Per seat</td><td>Shared Projects, admin controls, SSO, compliance features</td></tr>
 </tbody></table></div>
+<p>Claude's help pages also list an <b>Ultra</b> plan above Max on some accounts. Prices are charged in US dollars; check claude.com/pricing.</p>
 <h3>Models</h3>
 <ul><li><b>Opus 5.5:</b> the strongest everyday model for complex work (Pro and above).</li><li><b>Sonnet 5.5:</b> fast and very capable; a good default.</li><li><b>Haiku 5.5:</b> fastest and lightest, for simple quick tasks.</li><li><b>Fable 5.1:</b> top-tier model with extra safety measures, available on paid plans with usage limits.</li></ul>
+<h3>Choosing a model and effort</h3>
+<div class="tablewrap"><table><thead><tr><th>Job</th><th>Model</th><th>Effort / thinking</th></tr></thead><tbody>
+<tr><td>Rewording an email, a quick question, a translation</td><td>Haiku or Sonnet</td><td>Low, thinking off</td></tr>
+<tr><td>Letters from templates, summaries, Excel formulas</td><td>Sonnet</td><td>Medium</td></tr>
+<tr><td>Policy review against the law, payroll reconciliation, long reports</td><td>Opus</td><td>High</td></tr>
+<tr><td>Complex code, multi-step automation, hard analysis</td><td>Opus (or Fable if your plan includes it)</td><td>High</td></tr>
+</tbody></table></div>
+<p>Pick the model from the menu in the message box. Higher effort and thinking give more careful answers but use more of your allowance, so save them for work that needs it.</p>
 <h3>Key features to learn</h3>
 <div class="tablewrap"><table><thead><tr><th>Feature</th><th>What it does</th><th>How you can use it</th></tr></thead><tbody>
 <tr><td><b>Projects</b></td><td>A workspace with its own instructions and files that every chat in it can use</td><td>An "HR Letters" project holding your templates, policy manual and style rules</td></tr>
@@ -214,6 +252,20 @@ html{scroll-behavior:smooth; scroll-padding-top:20px}
 <li><b>Or upload one:</b> a skill is a folder with a <code>SKILL.md</code> file (name, a clear description of when to use it, then the steps), zipped. In <b>Customize → Skills</b> click <b>+ → Create skill → Upload a skill</b>, choose the ZIP and switch it on.</li>
 <li>Use it by simply asking for the job ("screen these CVs"), or type <b>/</b> in the message box to pick it.</li>
 </ol>
+<p><b>What a skill file looks like</b> (a simple example you could upload as <code>cv-screening/SKILL.md</code>):</p>
+<pre class="code"><code>---
+name: cv-screening
+description: Use when screening CVs for site or office roles against
+  the 6-point scorecard and producing a ranked Excel shortlist.
+---
+1. Ask for the job title and the 6 criteria if not given.
+2. Read every attached CV. Score each criterion 1-5 with one line
+   of evidence quoted from the CV. Never guess missing information.
+3. Flag employment gaps over 6 months and unattested degrees.
+4. Build an Excel file: one row per candidate, scores, total,
+   flags, recommendation (Shortlist / Hold / Reject).
+5. Sort by total, highest first. Summarise the top 5 in chat.
+</code></pre>
 <p class="callout">The description decides when Claude uses a skill, so make it specific: "Use when screening CVs for site roles against the 6-point scorecard" works better than "CV helper".</p>
 
 <h3>3 · Connectors</h3>
@@ -235,6 +287,109 @@ html{scroll-behavior:smooth; scroll-padding-top:20px}
 <li>Remove or switch off plugins you don't use, so Claude picks the right tool faster.</li>
 </ol>
 <p class="callout">Install plugins only from trusted sources. On Team and Enterprise plans, admins can share approved plugins with everyone.</p>
+
+<h3>5 · Memory and chat search</h3>
+<ol>
+<li>Go to <b>Settings → Your Claude</b> and turn on <b>Generate memory from chats</b> and <b>Search and reference chats</b>.</li>
+<li>Click <b>Manage</b> next to <b>Your memory</b> to read what Claude has saved, grouped by topic. Edit or delete anything wrong.</li>
+<li>In any chat you can say "remember that I use British spelling" or "forget my old job title".</li>
+<li>Ask "what did we decide last week about the overtime report?" and Claude searches your past chats.</li>
+<li>Each Project has its own memory. To keep a project separate, turn off <b>Use account memory</b> on the project page.</li>
+<li>For something private, start an <b>incognito chat</b> (ghost icon): it isn't saved or remembered.</li>
+</ol>
+
+<h3>6 · Artifacts: documents, slides, designs, dashboards</h3>
+<div class="tablewrap"><table><thead><tr><th>Type</th><th>Use it for</th><th>Export as</th></tr></thead><tbody>
+<tr><td><b>Docs</b></td><td>Policies, reports, letters, notes you keep editing</td><td>Word, PDF, Markdown, Google Docs</td></tr>
+<tr><td><b>Slides</b></td><td>Presentations, training decks</td><td>PowerPoint, PDF, Google Slides</td></tr>
+<tr><td><b>Design</b></td><td>Posters, one-pagers, mock-ups, landing pages</td><td>PDF, PowerPoint, HTML, .zip</td></tr>
+<tr><td><b>Data</b> (paid plans)</td><td>Dashboards and data stories</td><td>Shareable page</td></tr>
+<tr><td><b>Sheets</b> (beta, paid)</td><td>Spreadsheets with formulas you and Claude edit together</td><td>Shareable page</td></tr>
+<tr><td><b>Whiteboards</b> (beta, paid)</td><td>Brainstorms, flowcharts, process maps</td><td>Shareable page</td></tr>
+<tr><td>Other</td><td>Small web tools (calculators, forms), diagrams, code</td><td>Shareable page</td></tr>
+</tbody></table></div>
+<ol>
+<li>Ask for it in plain words ("make this into a 10-slide deck"), or click <b>Output</b> in the message box and choose a template.</li>
+<li>Edit it yourself (type in the doc, change a slide) or ask Claude for changes.</li>
+<li>Everything you make is saved in <b>Artifacts</b> in the sidebar.</li>
+<li>New artifacts are <b>private</b> until you share them. Use the share button to give a link to colleagues.</li>
+<li>Download in the format you need (Word, PowerPoint, PDF) from the artifact's menu.</li>
+</ol>
+<p class="callout">Artifacts need <b>Settings → Capabilities → Create and edit files</b> to be on.</p>
+
+<h3>7 · Research and web search</h3>
+<ul>
+<li><b>Web search:</b> Claude looks things up when your question needs current information. Ask it not to search when you only want it to use your files.</li>
+<li><b>Research</b> (paid plans): click <b>+</b> and turn on Research for big questions. Claude runs many searches over several minutes and writes a report with sources. Example: "What changed in UAE private-sector labour rules in 2026? Official sources first."</li>
+<li>Always open two or three of the sources to check the key facts.</li>
+</ul>
+
+<h3>8 · Claude in Chrome</h3>
+<ol>
+<li>In Google Chrome, open the Chrome Web Store, search <b>Claude</b>, click <b>Add to Chrome</b> and sign in (paid plans).</li>
+<li>Pin it: puzzle-piece icon → pin next to Claude. Click the icon to open the side panel.</li>
+<li>Give it a task on the page you're viewing: "Collect the title, company, emirate and link of every HR job on this page into a table."</li>
+<li>Watch the first few tasks. Claude pauses for your approval on sensitive actions; stop it if anything looks wrong.</li>
+<li>Save a prompt that works as a <b>shortcut</b> and reuse it by typing <b>/</b>. The clock icon in the panel lets you run shortcuts on a schedule.</li>
+</ol>
+<p class="callout">Be careful on sites with sign-ins, payments or personal data. Never let it submit anything you haven't reviewed.</p>
+
+<h3>9 · Claude for Microsoft 365 (Excel, Word, PowerPoint, Outlook)</h3>
+<ol>
+<li>In Excel (and Word, PowerPoint, Outlook) go to <b>Home → Add-ins</b> (Windows) or <b>Tools → Add-ins</b> (Mac), search <b>Claude</b> and add it. Sign in with your Claude account (paid plans).</li>
+<li>Open the Claude panel inside the app and ask: "Add a column that calculates gratuity from basic salary and joining date", "Build a pivot of overtime by site and month", "Explain this formula".</li>
+<li>Turn on <b>Let Claude work across files</b> in the add-in settings to move information between apps: "Use the figures in the open workbook to update the chart on slide 4."</li>
+<li>Your enabled skills work inside the add-ins too.</li>
+</ol>
+<p class="callout">Claude only sees the files and emails that are open. For work files, use the setup your company approves and check with IT first.</p>
+
+<h3>10 · Scheduled tasks</h3>
+<ol>
+<li>In any chat, describe the job and how often: "Every Monday at 8 AM, list new MOHRE announcements from the past week with links." Answer Claude's questions and click <b>Schedule</b>.</li>
+<li>Or click <b>Scheduled</b> in the sidebar → <b>New task</b> → <b>Create with Claude</b> or <b>Set up manually</b> (name, prompt, frequency: hourly, daily, weekly, weekdays).</li>
+<li>Tasks run in the cloud even when your computer is off, unless they need files on your computer.</li>
+<li>From <b>Scheduled</b> you can see past runs, edit, pause, delete or run a task now.</li>
+</ol>
+
+<h3>11 · Claude Code (for building tools)</h3>
+<p>Claude Code is the version of Claude that writes, runs and fixes code in a project folder: Python scripts, Excel automation, websites. Open the <b>Code</b> area of the desktop app or claude.ai/code, choose a folder or GitHub repository, and describe what you want: "Create a script that makes increment letters from this Excel file and the Word template, and test it on the sample rows." It shows each change, runs the code and can save the work to GitHub.</p>
+
+<h3>12 · Usage limits and long chats</h3>
+<ul>
+<li>Paid plans have a <b>session limit</b> that resets every five hours (counted from your first message) and a <b>weekly limit</b>. Check <b>Settings → Usage</b>.</li>
+<li>Usage is shared across the web, desktop, mobile and Claude Code.</li>
+<li><b>Make it last longer:</b> use a lower effort for routine jobs, turn off thinking when not needed, switch off connectors and web search you don't need, keep project instructions short, remove old project files, and start a new chat when one gets long.</li>
+<li>The <b>context window</b> (how much one chat can hold) is very large on the newest models. When a chat gets near the limit, Claude summarises earlier parts automatically.</li>
+</ul>
+
+<h3>13 · Privacy settings</h3>
+<ul>
+<li><b>Settings → Privacy:</b> choose whether your chats may be used to improve Claude.</li>
+<li>Use incognito chats for anything you don't want saved.</li>
+<li>Delete chats or memory topics you no longer want kept.</li>
+<li>For company data, use a Team or Enterprise account if your employer provides one.</li>
+</ul>
+
+<h3>A day of HR work with Claude</h3>
+<div class="tablewrap"><table><thead><tr><th>Time</th><th>Task</th><th>Feature used</th></tr></thead><tbody>
+<tr><td>8:00</td><td>Weekly HR news summary arrives</td><td>Scheduled task + web search</td></tr>
+<tr><td>9:00</td><td>Reply to three employee questions about leave</td><td>"Labour Law Q&amp;A" Project</td></tr>
+<tr><td>10:30</td><td>Generate this month's offer letters from the Excel list</td><td>Skill + file creation</td></tr>
+<tr><td>12:00</td><td>Check payroll changes against last month</td><td>Claude for Excel</td></tr>
+<tr><td>14:00</td><td>Turn the headcount report into a management deck</td><td>Slides artifact</td></tr>
+<tr><td>16:00</td><td>Collect new HR job postings into a sheet</td><td>Claude in Chrome</td></tr>
+</tbody></table></div>
+
+<h3>Troubleshooting</h3>
+<div class="tablewrap"><table><thead><tr><th>Problem</th><th>Fix</th></tr></thead><tbody>
+<tr><td>Claude ignores my format</td><td>Give a sample of the exact output; put the rule in Project instructions or a skill</td></tr>
+<tr><td>Can't make Word or Excel files, or artifacts</td><td>Turn on Settings → Capabilities → Create and edit files</td></tr>
+<tr><td>A skill isn't being used</td><td>Make its description more specific, or call it with /</td></tr>
+<tr><td>Connector can't find my file</td><td>Check it is switched on in the chat's + menu and that you signed in to the right account</td></tr>
+<tr><td>Hit the usage limit</td><td>Wait for the reset shown in Settings → Usage, or use a lighter model and lower effort</td></tr>
+<tr><td>Answers drift in a long chat</td><td>Start a new chat; keep key facts in the Project, not the conversation</td></tr>
+<tr><td>Wrong or outdated facts</td><td>Turn on web search or Research and ask for sources</td></tr>
+</tbody></table></div>
 <h3>How to get the best from Claude</h3>
 <ul>
 <li>One <b>Project</b> per repeated area of work; one <b>skill</b> per repeated procedure; <b>connectors</b> only for the apps you really use.</li>
@@ -256,6 +411,10 @@ html{scroll-behavior:smooth; scroll-padding-top:20px}
 <div class="qa">
 <details><summary>Exercise: set up an HR Letters Project in Claude.</summary><div><p><b>Steps:</b> create a Project; upload your letter templates and policy manual; write project instructions (tone, spelling, date format, "never invent salary figures", file naming rule); start a chat and ask for one letter; correct anything wrong and add the correction to the instructions. <b>Done when:</b> a new chat produces a correct letter without you repeating the rules.</p></div></details>
 <details><summary>Exercise: build a dashboard artifact from sample data.</summary><div><p>Upload a sample headcount sheet (IDs starting EMP) and ask: "Build an interactive dashboard with headcount by site, nationality and department, monthly turnover, and filters. Use only this data." Check every number against the sheet using a pivot table.</p></div></details>
+<details><summary>Exercise: connect Google Drive and use it in a chat.</summary><div><p>Customize → Connectors → Google Drive → Connect. In a new chat: "Find the most recent file in my Drive with 'headcount' in the name and summarise it in 5 bullet points." Then switch the connector off in the + menu and notice the difference.</p></div></details>
+<details><summary>Exercise: Claude in Excel.</summary><div><p>Open a sample payroll workbook (EMP IDs). Ask the Claude panel: "Add a gratuity column using basic salary and joining date, flag anyone with more than 5 years' service, and explain the formula." Check three rows by hand.</p></div></details>
+<details><summary>Exercise: set up a weekly scheduled task.</summary><div><p>"Every Sunday at 7 PM, give me 10 bullet points of UAE HR and labour news from the past week with links." Read the first three runs carefully before relying on it, and adjust the prompt if it picks weak sources.</p></div></details>
+<details><summary>Exercise: review and clean your memory.</summary><div><p>Settings → Your Claude → Manage memory. Read every topic, delete anything outdated, and correct anything wrong. Then ask Claude in a chat: "What do you know about how I like my letters formatted?"</p></div></details>
 <details><summary>Exercise: turn a repeated task into a skill.</summary><div><p>After you have done a task well three times (e.g. CV screening), ask: "Turn what we just did into a skill with clear steps, inputs and checks." Review the steps carefully, save it, then test it on a new batch.</p></div></details>
 </div>
 </section>
