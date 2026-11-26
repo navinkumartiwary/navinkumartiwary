@@ -79,7 +79,7 @@ html{scroll-behavior:smooth; scroll-padding-top:20px}
     <p class="crumb"><a href="../index.html#notes">Notes</a> / AI tools</p>
     <h1>AI tools: my learning notes</h1>
     <p class="sub">How to get real work done with Claude, ChatGPT, Gemini, Microsoft Copilot and the best of the rest. Prompting skills, key features, HR prompts you can copy, and exercises to practise with.</p>
-    <div class="meta"><span>By Navin Kumar Tiwary</span><span>Updated 26 Nov 2026</span><span>22 min read</span></div>
+    <div class="meta"><span>By Navin Kumar Tiwary</span><span>Updated 26 Nov 2026</span><span>29 min read</span></div>
   </div>
 </section>
 
@@ -142,6 +142,15 @@ html{scroll-behavior:smooth; scroll-padding-top:20px}
 <tr><td>"Write an offer letter."</td><td>"Draft an offer letter for a Site Engineer in Abu Dhabi. Basic AED 8,000, housing 3,000, transport 1,000. 6-month probation, 30 days' notice, 30 days' annual leave. Formal tone, one page, matching the attached template. Leave blanks in [brackets] for anything I haven't given you."</td></tr>
 <tr><td>"Explain gratuity."</td><td>"Explain UAE end-of-service gratuity to a worker who has served 7 years on basic AED 1,500. Use simple English, show the calculation, and mention that he should check final figures with HR."</td></tr>
 </tbody></table></div>
+<h3>Same feature, different names</h3>
+<div class="tablewrap"><table><thead><tr><th>What you want</th><th>Claude</th><th>ChatGPT</th><th>Gemini</th></tr></thead><tbody>
+<tr><td>A workspace with my files and standing rules</td><td>Projects</td><td>Projects</td><td>Skills with files; NotebookLM notebooks</td></tr>
+<tr><td>A saved, reusable procedure</td><td>Skills</td><td>Skills inside plugins</td><td>Skills (replacing Gems)</td></tr>
+<tr><td>Link to my other apps</td><td>Connectors</td><td>Apps (in Plugins)</td><td>Connected Apps</td></tr>
+<tr><td>A ready-made kit of tools for one job</td><td>Plugins</td><td>Plugins</td><td>—</td></tr>
+<tr><td>Remembers me across chats</td><td>Memory</td><td>Memory + custom instructions</td><td>Saved info / personal context</td></tr>
+<tr><td>Deep web research with sources</td><td>Research</td><td>Deep research</td><td>Deep Research</td></tr>
+</tbody></table></div>
 <h3>Practice exercises</h3>
 <div class="qa">
 <details><summary>Exercise: turn "summarise this policy" into a strong prompt.</summary><div><p><b>Model answer:</b> "Summarise the attached leave policy for new joiners. Audience: site supervisors. Give: 1) the 6 rules they must know, as bullet points; 2) a table of leave types with days and pay; 3) three common mistakes to avoid. Keep it under 250 words. Quote the policy clause number for each rule. Don't add anything that isn't in the policy."</p></div></details>
@@ -177,9 +186,58 @@ html{scroll-behavior:smooth; scroll-padding-top:20px}
 <tr><td><b>Claude Code</b></td><td>A coding agent that writes, runs and fixes code in a project</td><td>Build and maintain Python scripts and small websites</td></tr>
 <tr><td><b>Scheduled tasks</b></td><td>Runs a prompt automatically on a schedule</td><td>A daily list of new HR job postings at 9 AM</td></tr>
 </tbody></table></div>
+<h3>Step by step: Projects, Skills, Connectors and Plugins</h3>
+<p>These four features turn Claude from a chat box into a working assistant that knows your material, follows your procedures and reaches your apps. Menu names below are from Claude's help centre in November 2026.</p>
+<div class="tablewrap"><table><thead><tr><th>Feature</th><th>Think of it as</th><th>Plans</th></tr></thead><tbody>
+<tr><td><b>Project</b></td><td>A folder: your files + standing instructions, shared by every chat inside it</td><td>All plans (Free: up to 5)</td></tr>
+<tr><td><b>Skill</b></td><td>A saved procedure: "how we do this job", which Claude loads when the job comes up</td><td>All plans (needs file creation turned on)</td></tr>
+<tr><td><b>Connector</b></td><td>A cable to another app: Google Drive, Gmail, Calendar, Microsoft 365, Canva and many more</td><td>All plans (Free: one custom connector)</td></tr>
+<tr><td><b>Plugin</b></td><td>A ready-made kit for one type of work: several skills, connectors and helpers in one install</td><td>Paid plans</td></tr>
+</tbody></table></div>
+
+<h3>1 · Projects</h3>
+<ol>
+<li>In the left sidebar click <b>Projects</b> (or go to claude.ai/projects), then <b>+ New Project</b>.</li>
+<li>Give it a name and a short description, e.g. "HR Letters". (These are for you; Claude doesn't read them.)</li>
+<li>Click <b>Set project instructions</b> and write your standing rules, then <b>Save instructions</b>. Example: "You help with HR letters for a UAE contractor. British spelling. Dates as 25-Nov-26. Never invent salary figures; leave [blanks]. No sign-off unless asked."</li>
+<li>In the knowledge panel on the right, click <b>+</b> and upload your templates, policy manual and a couple of good past examples.</li>
+<li>Start every related chat <b>inside</b> the project. Each new chat already knows the files and rules.</li>
+<li>When Claude gets something wrong twice, add the fix to the instructions rather than repeating it in chat.</li>
+</ol>
+<p class="callout">Good projects to create: HR Letters, Payroll Checks, Labour Law Q&amp;A, CIPD Study, Job Search, Excel &amp; VBA. Chats outside a project can't see the project's files.</p>
+
+<h3>2 · Skills</h3>
+<ol>
+<li>Go to <b>Settings → Capabilities</b> and turn on <b>Create and edit files</b> (code execution). Skills need it.</li>
+<li>Open <b>Customize → Skills</b> in the left sidebar. Anthropic's own skills (Word, Excel, PowerPoint, PDF and others) are listed; switch on the ones you want.</li>
+<li><b>Make your own, the easy way:</b> do a job well once in chat (e.g. screening 10 CVs against a scorecard), then say "Turn what we just did into a skill." Claude drafts it and shows a card; review the steps and click save.</li>
+<li><b>Or upload one:</b> a skill is a folder with a <code>SKILL.md</code> file (name, a clear description of when to use it, then the steps), zipped. In <b>Customize → Skills</b> click <b>+ → Create skill → Upload a skill</b>, choose the ZIP and switch it on.</li>
+<li>Use it by simply asking for the job ("screen these CVs"), or type <b>/</b> in the message box to pick it.</li>
+</ol>
+<p class="callout">The description decides when Claude uses a skill, so make it specific: "Use when screening CVs for site roles against the 6-point scorecard" works better than "CV helper".</p>
+
+<h3>3 · Connectors</h3>
+<ol>
+<li>Open <b>Customize → Connectors</b>.</li>
+<li>Browse the directory, pick an app (Google Drive, Gmail, Google Calendar, Microsoft 365, Notion, Canva…) and click <b>Connect</b>. Sign in to that app and approve only the permissions you are comfortable with.</li>
+<li>For a service that isn't listed: <b>+ Add → Add custom connector</b>, give it a name and paste the remote MCP address the provider gives you.</li>
+<li>In any chat, click <b>+</b> (bottom left) <b>→ Connectors</b> and switch individual connectors on or off for that conversation.</li>
+<li>Ask in plain words: "Find the latest increment file in my Drive and list employees above AED 10,000", "What's on my calendar on Thursday?"</li>
+</ol>
+<p class="callout">Connect only apps and servers you trust, and turn off connectors that can write or send when you don't need them. To remove one, go back to Customize → Connectors and click the three dots beside it.</p>
+
+<h3>4 · Plugins</h3>
+<ol>
+<li>Open <b>Customize</b> in the left sidebar, then the <b>Plugins</b> tab, then <b>Discover</b>.</li>
+<li>Pick a plugin for your kind of work (data analysis, design, PDF, writing, research and many more) and click <b>Add</b>. Connect any app it asks for.</li>
+<li>In a chat, type <b>/</b> or click <b>+</b> to see the plugin's skills and commands, and click one to see what it does.</li>
+<li>To shape a plugin to your own workflow, open it and click <b>Customize</b>, then tell Claude what to change.</li>
+<li>Remove or switch off plugins you don't use, so Claude picks the right tool faster.</li>
+</ol>
+<p class="callout">Install plugins only from trusted sources. On Team and Enterprise plans, admins can share approved plugins with everyone.</p>
 <h3>How to get the best from Claude</h3>
 <ul>
-<li>Use <b>Projects</b> for every repeated area of work, with clear project instructions ("Always use British spelling. Never add a sign-off. Dates like 25-Nov-26.").</li>
+<li>One <b>Project</b> per repeated area of work; one <b>skill</b> per repeated procedure; <b>connectors</b> only for the apps you really use.</li>
 <li>Give templates and examples; Claude follows formatting closely when it sees a sample.</li>
 <li>For files, say the format: "Give me this as an Excel file with formulas, not values."</li>
 <li>For long jobs, ask for a plan or outline first, then approve.</li>
@@ -225,8 +283,31 @@ html{scroll-behavior:smooth; scroll-padding-top:20px}
 <tr><td><b>Voice</b></td><td>Real-time spoken conversation, also on mobile</td><td>Practise interview answers out loud; English speaking practice</td></tr>
 <tr><td><b>Search</b></td><td>Answers with live web results and links</td><td>Today's news on Emiratisation</td></tr>
 <tr><td><b>Agent and tasks</b></td><td>Does multi-step jobs in a browser; scheduled reminders and tasks</td><td>Weekly summary of new HR regulations</td></tr>
-<tr><td><b>Custom GPTs / plugins</b></td><td>Reusable assistants built for one job. OpenAI has announced that custom GPTs are moving to a plugin model; check what your account shows.</td><td>A "Labour law Q&amp;A" helper</td></tr>
+<tr><td><b>Plugins and apps</b></td><td>Apps connect ChatGPT to one service (Drive, Gmail, Slack…); plugins bundle apps and skills for a job. They replace custom GPTs, which OpenAI is retiring (announced for 11 December 2026).</td><td>A "Labour law Q&amp;A" plugin; Google Drive app</td></tr>
 </tbody></table></div>
+<h3>Step by step: Projects, personalisation, plugins and apps</h3>
+<h3>1 · Projects</h3>
+<ol>
+<li>In the sidebar click <b>New project</b>, name it (e.g. "CIPD Assignment") and pick a colour or icon.</li>
+<li>Open the project settings and add <b>instructions</b> (how ChatGPT should answer inside this project).</li>
+<li>Add <b>files</b>: the brief, your notes, templates.</li>
+<li>Start chats from inside the project; you can also move an existing chat into it.</li>
+</ol>
+<h3>2 · Custom instructions and memory</h3>
+<ol>
+<li>Go to <b>Settings → Personalization</b>.</li>
+<li>Fill in <b>Custom instructions</b>: who you are and how you want answers ("Senior HR officer in Abu Dhabi. British spelling. Short, practical answers with UAE law references.").</li>
+<li>Under <b>Memory</b>, check what it has saved; delete anything wrong. You can say "remember that…" or "forget that…" in any chat.</li>
+<li>Under <b>Data controls</b>, decide whether your chats can be used to improve the models.</li>
+</ol>
+<h3>3 · Plugins and apps (ChatGPT's connectors)</h3>
+<ol>
+<li>Click <b>Plugins</b> in the sidebar (on older apps, Settings → Apps). Browse the directory.</li>
+<li>Open a plugin, review the apps and skills it includes, and click <b>Install plugin</b>. If it needs an account, click <b>Connect</b>, sign in and approve permissions.</li>
+<li>In a chat, ask in plain words ("find the onboarding checklist in my Drive"), or type <b>@</b> and choose the app, or use the <b>+</b> button.</li>
+<li>Paid plans can add a custom MCP server: <b>Plugins → + → Add custom MCP server</b>.</li>
+<li>If you made custom GPTs, check the migration option on the GPT before it is retired, or rebuild it as a project or plugin.</li>
+</ol>
 <h3>How to get the best from ChatGPT</h3>
 <ul>
 <li>Fill in <b>custom instructions</b> once; it saves repeating yourself.</li>
@@ -249,7 +330,7 @@ html{scroll-behavior:smooth; scroll-padding-top:20px}
 <p class="why"><b>Best at:</b> anything connected to Google: Gmail, Calendar, Docs, Sheets, Drive, Maps and YouTube. Strong at reading very long files and videos, image and video generation, and live voice. Comes free with an Android phone and a Google account.</p>
 <h3>Plans (check gemini.google/subscriptions for prices in the UAE)</h3>
 <div class="tablewrap"><table><thead><tr><th>Plan</th><th>Price (US)</th><th>Notes</th></tr></thead><tbody>
-<tr><td>Free</td><td>$0</td><td>Chat, Deep Research, image generation, Canvas, Gems, Audio Overviews, with limits</td></tr>
+<tr><td>Free</td><td>$0</td><td>Chat, Deep Research, image generation, Canvas, skills, Audio Overviews, with limits</td></tr>
 <tr><td>Google AI Plus</td><td>Low-cost tier</td><td>More usage and storage, video generation credits</td></tr>
 <tr><td>Google AI Pro</td><td>About $19.99/month</td><td>Top models, much higher limits, long context, 5 TB storage, Gemini in Gmail and Docs</td></tr>
 <tr><td>Google AI Ultra</td><td>Highest tier</td><td>Earliest access to new models and agents (such as Gemini Spark), highest limits</td></tr>
@@ -258,7 +339,8 @@ html{scroll-behavior:smooth; scroll-padding-top:20px}
 <p><b>Models:</b> the Gemini 4 family is rolling out in the app (Gemini 4 Argon for AI Pro and Ultra), alongside fast "Flash" models and a "Deep Think" mode for hard reasoning. Pick from the model menu.</p>
 <h3>Key features to learn</h3>
 <div class="tablewrap"><table><thead><tr><th>Feature</th><th>What it does</th><th>How you can use it</th></tr></thead><tbody>
-<tr><td><b>Gems</b></td><td>Custom assistants with saved instructions and files</td><td>A "Payroll checker" Gem with your rules</td></tr>
+<tr><td><b>Skills</b> (replacing Gems)</td><td>Saved instructions and files you call with / in any chat; Gemini can also use them automatically</td><td>A "payroll-checker" skill with your rules</td></tr>
+<tr><td><b>Connected Apps</b></td><td>Lets Gemini use Gmail, Drive, Docs, Calendar, Keep, YouTube, Maps and more</td><td>"@Gmail find the agency's last invoice"</td></tr>
 <tr><td><b>Deep Research</b></td><td>Researches many sites, writes a report, can turn it into an audio overview</td><td>Market salary trends for HR roles in the UAE</td></tr>
 <tr><td><b>Canvas</b></td><td>Side-by-side editing of documents and code</td><td>Edit a policy draft line by line</td></tr>
 <tr><td><b>Gemini in Workspace</b></td><td>Summarise and draft inside Gmail, Docs, Sheets, Drive, Meet</td><td>"Summarise all emails from the recruitment agency this week"</td></tr>
@@ -267,12 +349,36 @@ html{scroll-behavior:smooth; scroll-padding-top:20px}
 <tr><td><b>Daily Brief and Spark</b></td><td>Morning digest of email and calendar; a background agent that does tasks (rolling out by plan and country)</td><td>Daily priority list; drafting follow-up emails</td></tr>
 <tr><td><b>Google AI Studio</b></td><td>Free developer playground for Gemini models and API keys</td><td>Test prompts for an HR chatbot</td></tr>
 </tbody></table></div>
+<h3>Step by step: skills, Connected Apps and NotebookLM</h3>
+<p class="callout"><b>Gems are becoming skills.</b> For personal Google accounts, Gems turned read-only on 17 November 2026 and are removed on 17 December 2026; they convert to skills automatically (very large or unsupported files are dropped, so download anything important). Work accounts follow in 2027.</p>
+<h3>1 · Skills</h3>
+<ol>
+<li>On gemini.google.com, open <b>Customize → Skills</b> in the sidebar (click <b>More</b> first if you don't see Customize).</li>
+<li>Click <b>Create → Create manually</b>. Enter a name (lower case with hyphens, e.g. <code>labour-law-helper</code>), a description of when to use it, and the instructions. Click <b>Create</b>.</li>
+<li>Or ask in chat: "Create a skill for me that checks a draft letter for UAE labour law errors…" and Gemini writes it for you.</li>
+<li>To attach files (web and Mac app): download the skill, put <code>SKILL.md</code> and your files in a folder with the same name, then use <b>More options → Replace skill</b> to upload the folder (up to 100 MB).</li>
+<li>Use it by typing <b>/</b> and the skill name in any chat. You can stack two skills, e.g. <code>/fact-check</code> then <code>/plain-english</code>.</li>
+</ol>
+<h3>2 · Connected Apps</h3>
+<ol>
+<li>Open <b>Settings → Connected Apps</b> (older versions: Extensions).</li>
+<li>Switch on the apps you want: Google Workspace (Gmail, Drive, Docs, Calendar, Keep), YouTube, Maps and others.</li>
+<li>In a chat, mention the app: "@Gmail summarise emails from the recruitment agency this week", "@Drive find the leave policy".</li>
+<li>Switch off apps you don't need; you can also turn off Gemini's activity history in settings.</li>
+</ol>
+<h3>3 · NotebookLM notebooks</h3>
+<ol>
+<li>Go to notebooklm.google.com and click <b>New notebook</b>.</li>
+<li>Add sources: PDFs, Google Docs and Slides, websites, YouTube links, pasted text.</li>
+<li>Ask questions in the chat; every answer cites the exact source passage.</li>
+<li>Use the studio panel for study guides, mind maps, flashcards, quizzes and Audio Overviews.</li>
+</ol>
 <h3>NotebookLM (Google's study tool)</h3>
 <p>Upload PDFs, Word files, Google Docs, websites or YouTube links into a notebook. NotebookLM answers <b>only from your sources</b>, with citations to the exact passage. It can create study guides, FAQs, timelines, mind maps, flashcards, quizzes and <b>Audio Overviews</b> (a podcast-style discussion of your material). Ideal for CIPD units, the UAE Labour Law text and company policies.</p>
 <h3>Practice exercises</h3>
 <div class="qa">
 <details><summary>Exercise: build a CIPD revision notebook in NotebookLM.</summary><div><p>Create a notebook, upload your unit materials and your own notes, and ask: "Make a study guide for unit 5CO01 with 10 key terms and 10 exam questions." Generate an Audio Overview and listen on your commute. Check two answers against the sources it cites.</p></div></details>
-<details><summary>Exercise: create a Gem for labour law questions.</summary><div><p>Instructions: "Answer UAE private-sector labour law questions using only the attached law and regulations. Quote the article number. If unsure, say so and suggest checking MOHRE. Reply in simple English." Upload the law PDF. Test it with five real employee questions and check each article.</p></div></details>
+<details><summary>Exercise: create a skill for labour law questions.</summary><div><p>Name it <code>labour-law-helper</code>. Instructions: "Answer UAE private-sector labour law questions using only the attached law and regulations. Quote the article number. If unsure, say so and suggest checking MOHRE. Reply in simple English." Attach the law PDF to the skill (step 4 above), or keep the law in a NotebookLM notebook. Test it with five real employee questions and check each article.</p></div></details>
 <details><summary>Exercise: summarise a long YouTube training video.</summary><div><p>Paste a YouTube link and ask: "Summarise this video in 10 bullet points, list the Excel functions shown with timestamps, and write 5 quiz questions." Then watch two of the timestamps to confirm accuracy.</p></div></details>
 </div>
 </section>
@@ -344,7 +450,7 @@ html{scroll-behavior:smooth; scroll-padding-top:20px}
 <section class="nsec" id="ai-7">
   <h2><span class="no">7</span>AI for HR work: a prompt library</h2>
   <p class="tagline">Copy, adapt, save</p>
-<p class="why"><b>How to use:</b> copy a prompt, replace the [brackets], attach your files, and save the versions that work into a Project, Gem or skill.</p>
+<p class="why"><b>How to use:</b> copy a prompt, replace the [brackets], attach your files, and save the versions that work into a Project or skill.</p>
 <div class="tablewrap"><table><thead><tr><th>Area</th><th>Prompt</th></tr></thead><tbody>
 <tr><td>Recruitment</td><td>"Write a job advert for [role] in [location]. Must-haves: [list]. Offer: [list]. Under 250 words, inclusive language, no age or nationality limits."</td></tr>
 <tr><td>CV screening</td><td>"Score each attached CV against these 6 criteria [list] from 1–5 with one line of evidence each. Put results in a table sorted by total. Flag gaps in employment over 6 months. Don't guess missing information."</td></tr>
@@ -388,7 +494,7 @@ html{scroll-behavior:smooth; scroll-padding-top:20px}
   <p class="tagline">Learn by doing</p>
 <p class="why"><b>How to use:</b> complete one project a week. Tick each one when it works on real (or sample) data and you have checked the output.</p>
 <div class="qa">
-<details><summary>Project 1: a personal HR assistant Project (Claude) and Gem (Gemini).</summary><div><p>Set up the same assistant in both tools with your rules and policy files. Ask both 10 real questions. Record which was more accurate and why. Keep the better one as your daily assistant.</p></div></details>
+<details><summary>Project 1: a personal HR assistant as a Claude Project and a Gemini skill.</summary><div><p>Set up the same assistant in both tools with your rules and policy files. Ask both 10 real questions. Record which was more accurate and why. Keep the better one as your daily assistant.</p></div></details>
 <details><summary>Project 2: letter automation end to end.</summary><div><p>Excel list → Python or Claude → Word letters → STATUS marked "Made" → PDF copies. Write a one-page "how to run it" guide so a colleague can use it. Test with 5 sample rows including edge cases (blank dates, missing allowances).</p></div></details>
 <details><summary>Project 3: research report with sources.</summary><div><p>Use Claude Research, ChatGPT deep research and Perplexity on the same question, e.g. "Changes to UAE private-sector labour rules in 2026". Merge into one report, verify every claim against MOHRE or official sources, and note where the tools disagreed.</p></div></details>
 <details><summary>Project 4: a training video.</summary><div><p>Script with Claude, slides with Claude Slides or Gamma, voice with ElevenLabs or your own voice, clips with Google Flow, edit in CapCut or Clipchamp. Keep it under 5 minutes and add a 3-question quiz.</p></div></details>
@@ -399,7 +505,7 @@ html{scroll-behavior:smooth; scroll-padding-top:20px}
 <ul>
 <li>Write a prompt with role, task, context, format, examples and constraints without thinking about it?</li>
 <li>Explain when to use Claude, ChatGPT, Gemini, Copilot and NotebookLM?</li>
-<li>Set up a Project, a Gem and custom instructions?</li>
+<li>Set up a Project, a skill, a connector and custom instructions?</li>
 <li>Get a cited research report and check its sources?</li>
 <li>Produce a finished Word, Excel or PowerPoint file from a prompt?</li>
 <li>Automate one repeated HR task and explain how you check it?</li>
